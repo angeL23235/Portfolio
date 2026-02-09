@@ -1,39 +1,19 @@
-import { useState } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import SocialButton from '../SocialButton/SocialButton';
 import './Contact.css';
 
 const Contact = () => {
   const { t } = useLanguage();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert('Mensaje enviado correctamente');
-      setFormData({ name: '', email: '', message: '' });
-    }, 1000);
-  };
+  const email = import.meta.env.VITE_CORREO;
+  const gmailLink = email 
+    ? `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(email)}&su=&body=`
+    : '#';
 
   const socialLinks = {
     linkedin: 'https://www.linkedin.com/in/miguel-angel-londoño-804740352',
     github: 'https://github.com/angeL23235',
-    whatsapp: 'https://wa.me/573234555797'
+    whatsapp: 'https://wa.me/573234555797',
+    email: gmailLink
   };
 
   return (
@@ -85,78 +65,31 @@ const Contact = () => {
               </svg>
             }
           />
+          <SocialButton
+            href={socialLinks.email}
+            bgColor="#EA4335"
+            text="Email"
+            ariaLabel="Enviar correo"
+            icon={
+              <svg fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+              </svg>
+            }
+          />
         </div>
 
-        <div className="contact-form-container">
-          <form onSubmit={handleSubmit} className="contact-form">
-            <div className="contact-field">
-              <label htmlFor="name" className="contact-label">
-                {t('name')}
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="contact-input"
-                placeholder={t('name')}
-              />
-            </div>
-            <div className="contact-field">
-              <label htmlFor="email" className="contact-label">
-                {t('email')}
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="contact-input"
-                placeholder={t('email')}
-              />
-            </div>
-            <div className="contact-field">
-              <label htmlFor="message" className="contact-label">
-                {t('message')}
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows="6"
-                className="contact-textarea"
-                placeholder={t('message')}
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="contact-submit"
-            >
-              {isSubmitting ? (
-                <>
-                  <svg className="contact-spinner" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  {t('sending')}
-                </>
-              ) : (
-                <>
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
-                  {t('send')}
-                </>
-              )}
-            </button>
-          </form>
+        <div className="contact-info">
+          <p className="contact-cta">
+            {t('contactCTA')}
+          </p>
+          <div className="contact-details">
+            <span className="contact-badge">
+              {t('contactAvailable')}
+            </span>
+            <span className="contact-response">
+              {t('contactResponse')}
+            </span>
+          </div>
         </div>
       </div>
     </section>

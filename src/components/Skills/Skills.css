@@ -1,15 +1,19 @@
 .skills {
   padding: 96px 16px;
-  background: white;
+  background: transparent;
+  position: relative;
 }
 
 .dark .skills {
-  background: #111827;
+  background: transparent;
 }
 
 .skills-container {
   max-width: 1280px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .skills-header {
@@ -22,6 +26,8 @@
   font-weight: 800;
   margin-bottom: 24px;
   color: #111827;
+  text-align: center;
+  width: 100%;
 }
 
 .dark .skills-title {
@@ -70,23 +76,34 @@
 
 .skill-card {
   position: relative;
-  background: linear-gradient(to bottom right, #f9fafb, #f3f4f6);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   padding: 32px;
   border-radius: 16px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(114, 82, 255, 0.3);
   transition: all 0.3s ease;
-  border: 1px solid #e5e7eb;
+  border: 2px solid rgba(114, 82, 255, 0.4);
   overflow: hidden;
 }
 
 .dark .skill-card {
-  background: linear-gradient(to bottom right, #1f2937, #374151);
-  border-color: #4b5563;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 2px solid rgba(114, 82, 255, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(114, 82, 255, 0.3);
 }
 
 .skill-card:hover {
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
+  border-color: rgba(79, 70, 229, 0.5);
+}
+
+.dark .skill-card:hover {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(129, 140, 248, 0.3);
+  border-color: rgba(129, 140, 248, 0.5);
 }
 
 .skill-card-bg {
@@ -120,6 +137,10 @@
 .skill-card-content {
   position: relative;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .skill-icon {
@@ -131,17 +152,21 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 24px;
-  color: #111827;
+  color: #f9fafb;
+  text-align: center;
+  width: 100%;
 }
 
 .dark .skill-category {
-  color: #ffffff;
+  color: #f9fafb;
 }
 
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  justify-content: center;
+  align-items: center;
 }
 
 .skill-tag-wrapper {
@@ -150,40 +175,40 @@
 
 .skill-tag {
   padding: 8px 16px;
-  background: white;
-  color: #1f2937;
+  background: rgba(30, 41, 59, 0.8);
+  color: #e2e8f0;
   border-radius: 12px;
   font-size: 0.875rem;
   font-weight: 600;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(114, 82, 255, 0.3);
   display: inline-flex;
   align-items: center;
   gap: 6px;
   cursor: pointer;
   position: relative;
   z-index: 1;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .dark .skill-tag {
-  background: #111827;
-  color: #e5e7eb;
-  border-color: #374151;
+  background: rgba(30, 41, 59, 0.8);
+  color: #e2e8f0;
+  border-color: rgba(114, 82, 255, 0.3);
 }
 
 .skill-tag-icon {
   font-size: 1rem;
-  opacity: 0;
-  width: 0;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px;
   transition: all 0.3s ease;
-  display: inline-block;
 }
 
-.skill-tag:hover .skill-tag-icon {
-  opacity: 1;
-  width: auto;
-  margin-right: 4px;
+.skill-tag-icon i {
+  font-size: 1rem;
 }
 
 .skill-tag-text {
@@ -191,15 +216,17 @@
 }
 
 .skill-tag:hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px rgba(114, 82, 255, 0.4);
   transform: scale(1.1);
-  background: linear-gradient(to right, #eef2ff, #f3e8ff);
-  border-color: #4f46e5;
+  background: rgba(114, 82, 255, 0.2);
+  border-color: rgba(114, 82, 255, 0.6);
+  color: #ffffff;
 }
 
 .dark .skill-tag:hover {
-  background: linear-gradient(to right, #312e81, #581c87);
-  border-color: #818cf8;
+  background: rgba(114, 82, 255, 0.2);
+  border-color: rgba(114, 82, 255, 0.6);
+  color: #ffffff;
 }
 
 .skill-tooltip {
@@ -249,6 +276,12 @@
 }
 
 .skill-tooltip-icon {
+  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.skill-tooltip-icon i {
   font-size: 1.25rem;
 }
 

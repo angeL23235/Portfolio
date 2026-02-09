@@ -38,6 +38,9 @@ const translations = {
     // Contact
     contactTitle: 'Contacto',
     contactDescription: '¿Tienes un proyecto en mente? ¡Hablemos!',
+    contactCTA: 'Estoy disponible para nuevos proyectos y colaboraciones',
+    contactResponse: 'Tiempo de respuesta: 24-48 horas',
+    contactAvailable: 'Disponible para trabajar',
     name: 'Nombre',
     email: 'Email',
     message: 'Mensaje',
@@ -90,6 +93,9 @@ const translations = {
     // Contact
     contactTitle: 'Contact',
     contactDescription: 'Have a project in mind? Let\'s talk!',
+    contactCTA: 'I\'m available for new projects and collaborations',
+    contactResponse: 'Response time: 24-48 hours',
+    contactAvailable: 'Available for work',
     name: 'Name',
     email: 'Email',
     message: 'Message',

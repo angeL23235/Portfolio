@@ -1,10 +1,11 @@
 .about {
   padding: 96px 16px;
-  background: white;
+  background: transparent;
+  position: relative;
 }
 
 .dark .about {
-  background: #111827;
+  background: transparent;
 }
 
 .about-container {

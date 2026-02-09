@@ -1,22 +1,23 @@
 import { useLanguage } from '../../contexts/LanguageContext';
+import { RevealSection, RevealCard } from '../../hooks/useScrollReveal';
 import './Skills.css';
 
 const Skills = () => {
   const { t } = useLanguage();
 
   const skillIcons = {
-    'React': '⚛️',
-    'Tailwind CSS': '🎨',
-    'HTML/CSS': '🌐',
-    'JavaScript': '📜',
-    'Node.js': '🟢',
-    'Python': '🐍',
-    'MongoDB': '🍃',
-    'Git': '📦',
-    'Postman': '📮',
-    'GitHub': '🐙',
-    'Figma': '🎭',
-    'Vite': '⚡'
+    'React': <i className="fab fa-react"></i>,
+    'Tailwind CSS': <i className="fab fa-css3-alt"></i>,
+    'HTML/CSS': <i className="fab fa-html5"></i>,
+    'JavaScript': <i className="fab fa-js"></i>,
+    'Node.js': <i className="fab fa-node"></i>,
+    'Python': <i className="fab fa-python"></i>,
+    'MongoDB': <i className="fas fa-database"></i>,
+    'Git': <i className="fab fa-git-alt"></i>,
+    'Postman': <i className="fas fa-paper-plane"></i>,
+    'GitHub': <i className="fab fa-github"></i>,
+    'Figma': <i className="fab fa-figma"></i>,
+    'Vite': <i className="fas fa-bolt"></i>
   };
 
   const skillCategories = {
@@ -38,7 +39,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="skills">
+    <RevealSection id="skills" className="skills">
       <div className="skills-container">
         <div className="skills-header">
           <h2 className="skills-title">
@@ -49,8 +50,9 @@ const Skills = () => {
           <div className="skills-divider"></div>
         </div>
         <div className="skills-grid">
-          {Object.entries(skillCategories).map(([category, data]) => (
-            <div key={category} className="skill-card">
+          {Object.entries(skillCategories).map(([category, data], index) => (
+            <RevealCard key={category} delay={index * 150}>
+              <div className="skill-card">
               <div className={`skill-card-bg ${data.bgClass}`}></div>
               <div className="skill-card-content">
                 <div className="skill-icon">{data.icon}</div>
@@ -72,11 +74,12 @@ const Skills = () => {
                   ))}
                 </div>
               </div>
-            </div>
+              </div>
+            </RevealCard>
           ))}
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 };
 
