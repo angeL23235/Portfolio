@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/Portfolio/',
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
