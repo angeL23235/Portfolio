@@ -138,7 +138,7 @@
   min-width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   padding: 20px 40px;
   box-sizing: border-box;
@@ -147,8 +147,8 @@
 .project-viewer-image {
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -250,24 +250,21 @@
 
   .project-viewer-wrapper {
     padding: 10px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    display: block;
     min-height: 100vh;
     width: 100%;
     position: relative;
-    padding-top: 5vh;
   }
 
   .project-viewer-container {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: calc(100vw - 20px);
     max-width: none;
     height: auto;
-    max-height: 92vh;
+    max-height: 95vh;
     border-radius: 16px;
     margin: 0;
     display: flex;
@@ -298,18 +295,27 @@
   }
 
   .project-viewer-content {
-    padding: 15px 40px;
-    min-height: 300px;
-    max-height: calc(92vh - 140px);
+    padding: 5px 10px;
+    min-height: 400px;
+    max-height: calc(95vh - 140px);
     flex: 1;
     overflow: hidden;
   }
 
   .project-viewer-slide {
-    padding: 10px 20px;
+    padding: 0 5px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
+  
   .project-viewer-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     border-radius: 8px;
   }
 
@@ -351,20 +357,19 @@
 
   .project-viewer-wrapper {
     padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     min-height: 100vh;
     width: 100%;
+    position: relative;
   }
 
   .project-viewer-container {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: calc(100vw - 10px);
-    max-height: 90vh;
+    max-height: 95vh;
     border-radius: 12px;
     margin: 0;
     display: flex;
@@ -392,13 +397,27 @@
   }
 
   .project-viewer-content {
-    padding: 10px 30px;
-    min-height: 200px;
-    max-height: calc(100vh - 160px);
+    padding: 5px 8px;
+    min-height: 350px;
+    max-height: calc(95vh - 160px);
+    flex: 1;
+    overflow: hidden;
   }
 
   .project-viewer-slide {
-    padding: 8px 15px;
+    padding: 0 3px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .project-viewer-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   .project-viewer-nav {
