@@ -20,8 +20,8 @@ const translations = {
     
     // Projects
     projectsTitle: 'Proyectos',
-    project1Title: 'E-commerce Platform',
-    project1Description: 'Plataforma de comercio electrónico completa con carrito de compras y sistema de pagos',
+    project1Title: 'Traslapp',
+    project1Description: 'Aplicación web en PHP para gestionar usuarios y servicios (hostelería, cocina, transporte, limpieza). Incluye registro/login, panel de cliente, módulos de servicios, administración y sistema de calificaciones.',
     project2Title: 'Task Management App',
     project2Description: 'Aplicación de gestión de tareas con funcionalidades de colaboración en tiempo real',
     project3Title: 'Social Media Dashboard',
@@ -75,8 +75,8 @@ const translations = {
     
     // Projects
     projectsTitle: 'Projects',
-    project1Title: 'E-commerce Platform',
-    project1Description: 'Complete e-commerce platform with shopping cart and payment system',
+    project1Title: 'Traslapp',
+    project1Description: 'PHP web application for managing users and services (hospitality, kitchen, transportation, cleaning). Includes registration/login, client panel, service modules, administration and rating system.',
     project2Title: 'Task Management App',
     project2Description: 'Task management application with real-time collaboration features',
     project3Title: 'Social Media Dashboard',

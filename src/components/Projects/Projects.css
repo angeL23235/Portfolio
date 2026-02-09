@@ -132,8 +132,9 @@
 .project-gradient {
   position: absolute;
   inset: 0;
-  opacity: 0.9;
+  opacity: 0.3;
   transition: opacity 0.5s ease;
+  z-index: 0;
 }
 
 .project-card:hover .project-gradient {
@@ -156,8 +157,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  mix-blend-mode: overlay;
   transition: transform 0.5s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .project-card:hover .project-image {

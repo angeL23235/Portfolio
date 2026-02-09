@@ -1,6 +1,7 @@
 import { useLanguage } from '../../contexts/LanguageContext';
 import { RevealSection, RevealCard } from '../../hooks/useScrollReveal';
 import './Projects.css';
+import traslappImage from '../../assets/projects/traslapp/Perfil.png';
 
 const Projects = () => {
   const { t } = useLanguage();
@@ -9,11 +10,11 @@ const Projects = () => {
     {
       title: t('project1Title'),
       description: t('project1Description'),
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop',
+      image: traslappImage,
       gradientClass: 'project-gradient-blue',
-      technologies: ['React', 'Node.js', 'MongoDB'],
-      projectLink: '#',
-      codeLink: '#'
+      technologies: ['PHP', 'MySQL', 'CSS', 'JavaScript'],
+      projectLink: 'https://traslapp-web.onrender.com',
+      codeLink: 'https://github.com/angeL23235/complete'
     },
     {
       title: t('project2Title'),
