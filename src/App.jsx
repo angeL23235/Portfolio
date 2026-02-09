@@ -27,12 +27,12 @@ function App() {
       image: background1
     },
     {
-      id: 'projects',
-      image: background1
-    },
-    {
       id: 'skills',
       image: background2
+    },
+    {
+      id: 'projects',
+      image: background1
     },
     {
       id: 'contact',
@@ -50,13 +50,13 @@ function App() {
           />
           <AnimatedBackground activeBackgroundIndex={activeBackgroundIndex} />
           <Navbar />
-          <main>
-            <Hero />
-            <About />
-            <Projects />
-            <Skills />
-            <Contact />
-          </main>
+                  <main>
+                    <Hero />
+                    <About />
+                    <Skills />
+                    <Projects />
+                    <Contact />
+                  </main>
           <Footer />
         </div>
       </LanguageProvider>

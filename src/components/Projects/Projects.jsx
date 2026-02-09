@@ -1,10 +1,25 @@
+import { useState } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { RevealSection, RevealCard } from '../../hooks/useScrollReveal';
 import './Projects.css';
+import ProjectViewer from './ProjectViewer';
 import traslappImage from '../../assets/projects/traslapp/Perfil.png';
+import fudeaJurImage from '../../assets/projects/FudeaJur/TablaRegistrosFiltrados.png';
+
+import traslappLogin from '../../assets/projects/traslapp/Login.png';
+import traslappPerfil from '../../assets/projects/traslapp/Perfil.png';
+import traslappCalificacion from '../../assets/projects/traslapp/CalificacionServicio.png';
+import traslappReserva from '../../assets/projects/traslapp/ReservaHoteles.png';
+
+import fudeaJurTabla from '../../assets/projects/FudeaJur/TablaRegistrosFiltrados.png';
+import fudeaJurPaginado from '../../assets/projects/FudeaJur/PaginadoCustomizable.png';
+import fudeaJurPrestadores from '../../assets/projects/FudeaJur/PrestadoresServicio.png'; 
 
 const Projects = () => {
   const { t } = useLanguage();
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const [viewerImages, setViewerImages] = useState([]);
+  const [viewerTitle, setViewerTitle] = useState('');
 
   const projects = [
     {
@@ -14,16 +29,18 @@ const Projects = () => {
       gradientClass: 'project-gradient-blue',
       technologies: ['PHP', 'MySQL', 'CSS', 'JavaScript'],
       projectLink: 'https://traslapp-web.onrender.com',
-      codeLink: 'https://github.com/angeL23235/complete'
+      codeLink: 'https://github.com/angeL23235/complete',
+      galleryImages: [traslappLogin, traslappPerfil, traslappCalificacion, traslappReserva]
     },
     {
       title: t('project2Title'),
       description: t('project2Description'),
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=500&fit=crop',
+      image: fudeaJurImage,
       gradientClass: 'project-gradient-purple',
-      technologies: ['React', 'Tailwind CSS', 'Firebase'],
+      technologies: ['React', 'CSS', 'Postman'],
       projectLink: '#',
-      codeLink: '#'
+      codeLink: '#',
+      galleryImages: [fudeaJurTabla, fudeaJurPaginado, fudeaJurPrestadores]
     },
     {
       title: t('project3Title'),
@@ -90,24 +107,41 @@ const Projects = () => {
                   ))}
                 </div>
                 <div className="project-buttons">
-                  <a 
-                    href={project.projectLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => {
+                      if (project.projectLink && project.projectLink !== '#') {
+                        window.open(project.projectLink, '_blank', 'noopener,noreferrer');
+                      } else if (project.galleryImages && project.galleryImages.length > 0) {
+                        setViewerImages(project.galleryImages);
+                        setViewerTitle(project.title);
+                        setViewerOpen(true);
+                      }
+                    }}
                     className="project-button-primary"
                   >
-                    <i className="fas fa-external-link-alt"></i>
-                    <span>{t('viewProject')}</span>
-                  </a>
-                  <a 
-                    href={project.codeLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="project-button-secondary"
-                  >
-                    <i className="fab fa-github"></i>
-                    <span>{t('viewCode')}</span>
-                  </a>
+                    {project.projectLink && project.projectLink !== '#' ? (
+                      <>
+                        <i className="fas fa-external-link-alt"></i>
+                        <span>{t('viewProject')}</span>
+                      </>
+                    ) : (
+                      <>
+                        <i className="fas fa-images"></i>
+                        <span>{t('viewProject')}</span>
+                      </>
+                    )}
+                  </button>
+                  {project.codeLink && project.codeLink !== '#' && (
+                    <a 
+                      href={project.codeLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-button-secondary"
+                    >
+                      <i className="fab fa-github"></i>
+                      <span>{t('viewCode')}</span>
+                    </a>
+                  )}
                 </div>
               </div>
               </div>
@@ -115,6 +149,12 @@ const Projects = () => {
           ))}
         </div>
       </div>
+      <ProjectViewer
+        isOpen={viewerOpen}
+        onClose={() => setViewerOpen(false)}
+        images={viewerImages}
+        projectTitle={viewerTitle}
+      />
     </RevealSection>
   );
 };

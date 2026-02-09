@@ -92,7 +92,8 @@ const Navbar = () => {
               onClick={() => scrollToSection('home')}
               className="navbar-logo-button"
             >
-              Portfolio
+              <span className="navbar-logo-desktop">Portfolio</span>
+              <span className="navbar-logo-mobile">Angel</span>
             </button>
           </div>
 
@@ -110,16 +111,16 @@ const Navbar = () => {
               {t('about')}
             </button>
             <button
-              onClick={() => scrollToSection('projects')}
-              className="navbar-menu-button"
-            >
-              {t('projects')}
-            </button>
-            <button
               onClick={() => scrollToSection('skills')}
               className="navbar-menu-button"
             >
               {t('skills')}
+            </button>
+            <button
+              onClick={() => scrollToSection('projects')}
+              className="navbar-menu-button"
+            >
+              {t('projects')}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
@@ -218,16 +219,16 @@ const Navbar = () => {
             {t('about')}
           </button>
           <button
-            onClick={() => scrollToSection('projects')}
-            className="navbar-mobile-menu-button"
-          >
-            {t('projects')}
-          </button>
-          <button
             onClick={() => scrollToSection('skills')}
             className="navbar-mobile-menu-button"
           >
             {t('skills')}
+          </button>
+          <button
+            onClick={() => scrollToSection('projects')}
+            className="navbar-mobile-menu-button"
+          >
+            {t('projects')}
           </button>
           <button
             onClick={() => scrollToSection('contact')}

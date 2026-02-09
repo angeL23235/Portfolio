@@ -347,6 +347,7 @@
   border: none;
   position: relative;
   overflow: hidden;
+  font-family: inherit;
 }
 
 .project-button-primary {
