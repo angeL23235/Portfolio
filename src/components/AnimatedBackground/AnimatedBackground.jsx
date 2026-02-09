@@ -41,7 +41,9 @@ const AnimatedBackground = ({ activeBackgroundIndex = 0 }) => {
     let animationFrameId;
 
     const particles = [];
-    const particleCount = 200;
+    const particleCount = 180;
+
+    const footerHeight = 200;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -54,52 +56,58 @@ const AnimatedBackground = ({ activeBackgroundIndex = 0 }) => {
     class Particle {
       constructor() {
         this.reset();
+        this.initialY = 0;
+        this.maxHeight = 0;
       }
 
-      reset() {
-        const edge = Math.random();
-        if (edge < 0.25) {
-          this.x = -10;
-          this.y = Math.random() * canvas.height;
-          this.speedX = Math.random() * 4 + 2;
-          this.speedY = (Math.random() - 0.5) * 2;
-        } else if (edge < 0.5) {
-          this.x = canvas.width + 10;
-          this.y = Math.random() * canvas.height;
-          this.speedX = -(Math.random() * 4 + 2);
-          this.speedY = (Math.random() - 0.5) * 2;
-        } else if (edge < 0.75) {
-          this.x = Math.random() * canvas.width;
-          this.y = -10;
-          this.speedX = (Math.random() - 0.5) * 2;
-          this.speedY = Math.random() * 4 + 2;
-        } else {
-          this.x = Math.random() * canvas.width;
-          this.y = canvas.height + 10;
-          this.speedX = (Math.random() - 0.5) * 2;
-          this.speedY = -(Math.random() * 4 + 2);
-        }
+      reset(initialDistribution = false) {
+        const maxY = canvas.height - footerHeight;
+        const margin = canvas.width * 0.02;
+        const footerTop = canvas.height - footerHeight;
         
+        this.x = margin + Math.random() * (canvas.width - margin * 2);
+        this.initialX = this.x;
+        
+        if (initialDistribution) {
+          this.y = Math.random() * footerTop;
+        } else {
+          this.y = footerTop - 20 + Math.random() * 30;
+        }
+        this.initialY = this.y;
+        
+        this.speedY = -(Math.random() * 0.6 + 0.4);
         this.size = Math.random() * 1.5 + 1;
         this.color = colorsRef.current[Math.floor(Math.random() * colorsRef.current.length)];
-        this.opacity = Math.random() * 0.5 + 0.7;
+        this.opacity = Math.random() * 0.3 + 0.6;
+        this.serpentTime = Math.random() * Math.PI * 2;
+        this.serpentAmplitude = Math.random() * 8 + 5;
+        this.serpentSpeed = Math.random() * 0.015 + 0.01;
       }
 
       update() {
-        this.x += this.speedX;
+        this.serpentTime += this.serpentSpeed;
+        const distanceTraveled = this.initialY - this.y;
+        const serpentOffset = Math.sin(this.serpentTime) * this.serpentAmplitude * (1 + distanceTraveled * 0.001);
+        
+        this.x = this.initialX + serpentOffset;
         this.y += this.speedY;
+        this.speedY *= 0.9998;
 
-        if (this.x < -50 || this.x > canvas.width + 50 ||
-            this.y < -50 || this.y > canvas.height + 50) {
-          this.reset();
+        const footerTop = canvas.height - footerHeight;
+        if (this.y < -50) {
+          this.y = footerTop - 20 + Math.random() * 30;
+          this.initialY = this.y;
+          this.initialX = this.x;
         }
       }
 
       draw() {
+        if (this.opacity <= 0) return;
+        
         ctx.save();
         ctx.globalAlpha = this.opacity;
         ctx.fillStyle = this.color;
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 10;
         ctx.shadowColor = this.color;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -109,7 +117,9 @@ const AnimatedBackground = ({ activeBackgroundIndex = 0 }) => {
     }
 
     for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
+      const particle = new Particle();
+      particle.reset(true);
+      particles.push(particle);
     }
 
     const animate = () => {
