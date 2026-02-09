@@ -69,27 +69,16 @@ const sectionBackgrounds = [
 
 ## 🚀 Despliegue en GitHub Pages
 
-### Opción 1: GitHub Actions (Automático)
-
-1. El workflow se ejecuta automáticamente al hacer push a `main`
-2. Ve a Settings > Pages en tu repositorio
-3. Selecciona "GitHub Actions" como fuente
-
-### Opción 2: Manual
-
+1. Ejecuta el build:
 ```bash
 npm run build
 ```
 
-Luego sube el contenido de la carpeta `dist` a la rama `gh-pages` o usa:
+2. Sube el contenido de la carpeta `dist` a la rama `gh-pages`
 
-```bash
-npm run deploy
-```
+3. En GitHub: Settings > Pages > Source: selecciona la rama `gh-pages`
 
-**Importante**: Asegúrate de que en Settings > Pages esté configurado:
-- Source: `gh-pages` branch o `GitHub Actions`
-- El repositorio se llama exactamente `Portfolio` (con mayúscula)
+**Nota**: El repositorio debe llamarse `Portfolio` (con mayúscula) para que las rutas funcionen correctamente.
 
 ## 📝 Notas
 
