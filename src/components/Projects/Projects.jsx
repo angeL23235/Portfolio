@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { RevealSection, RevealCard } from '../../hooks/useScrollReveal';
+import { useNavigate } from 'react-router-dom';
 import './Projects.css';
-import ProjectViewer from './ProjectViewer';
 import traslappImage from '../../assets/projects/traslapp/Perfil.png';
 import fudeaJurImage from '../../assets/projects/FudeaJur/TablaRegistrosFiltrados.png';
 
@@ -17,39 +16,93 @@ import fudeaJurPrestadores from '../../assets/projects/FudeaJur/PrestadoresServi
 
 const Projects = () => {
   const { t } = useLanguage();
-  const [viewerOpen, setViewerOpen] = useState(false);
-  const [viewerImages, setViewerImages] = useState([]);
-  const [viewerTitle, setViewerTitle] = useState('');
+  const navigate = useNavigate();
 
   const projects = [
     {
+      id: 'traslapp',
       title: t('project1Title'),
-      description: t('project1Description'),
+      description: t('project1ShortDescription'),
+      fullDescription: t('project1Description'),
       image: traslappImage,
-      gradientClass: 'project-gradient-blue',
       technologies: ['PHP', 'MySQL', 'CSS', 'JavaScript'],
       projectLink: 'https://traslapp-web.onrender.com',
       codeLink: 'https://github.com/angeL23235/complete',
-      galleryImages: [traslappLogin, traslappPerfil, traslappCalificacion, traslappReserva]
+      galleryImages: [traslappLogin, traslappPerfil, traslappCalificacion, traslappReserva],
+      participation: [
+        {
+          area: 'Backend PHP',
+          contribution: 'Diseño y desarrollo de endpoints para registro, login, reservas y calificación de servicios.',
+          tech: 'PHP, MySQL, arquitectura MVC básica'
+        },
+        {
+          area: 'Frontend',
+          contribution: 'Maquetación y estilos de los módulos de perfil, reservas y calificaciones.',
+          tech: 'HTML, CSS, JavaScript'
+        },
+        {
+          area: 'Base de datos',
+          contribution: 'Modelado de tablas para usuarios, servicios, reservas y calificaciones.',
+          tech: 'MySQL'
+        }
+      ]
     },
     {
+      id: 'fudeajur',
       title: t('project2Title'),
-      description: t('project2Description'),
+      description: t('project2ShortDescription'),
+      fullDescription: t('project2Description'),
       image: fudeaJurImage,
-      gradientClass: 'project-gradient-purple',
       technologies: ['React', 'CSS', 'Postman'],
       projectLink: '#',
       codeLink: '#',
-      galleryImages: [fudeaJurTabla, fudeaJurPaginado, fudeaJurPrestadores]
+      galleryImages: [fudeaJurTabla, fudeaJurPaginado, fudeaJurPrestadores],
+      participation: [
+        {
+          area: 'Frontend React',
+          contribution: 'Construcción de tablas filtradas y paginadas para gestión de registros.',
+          tech: 'React, hooks personalizados'
+        },
+        {
+          area: 'Integración API',
+          contribution: 'Consumo y prueba de endpoints con Postman para asegurar la correcta comunicación.',
+          tech: 'Postman, REST API'
+        },
+        {
+          area: 'UI/UX',
+          contribution: 'Diseño de interfaz limpia y enfocada en la lectura de datos.',
+          tech: 'CSS modular'
+        }
+      ]
     },
     {
+      id: 'cobros-deudas',
       title: t('project3Title'),
-      description: t('project3Description'),
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop',
-      gradientClass: 'project-gradient-indigo',
-      technologies: ['Next.js', 'TypeScript', 'PostgreSQL'],
+      description: t('project3ShortDescription'),
+      fullDescription: t('project3Description'),
+      status: t('project3Status'),
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=500&fit=crop',
+      technologies: ['Node.js', 'Prisma', 'JavaScript', 'React', 'PostgreSQL'],
       projectLink: '#',
-      codeLink: '#'
+      codeLink: '#',
+      galleryImages: [],
+      participation: [
+        {
+          area: t('project3Row1Area'),
+          contribution: t('project3Row1Contribution'),
+          tech: t('project3Row1Tech')
+        },
+        {
+          area: t('project3Row2Area'),
+          contribution: t('project3Row2Contribution'),
+          tech: t('project3Row2Tech')
+        },
+        {
+          area: t('project3Row3Area'),
+          contribution: t('project3Row3Contribution'),
+          tech: t('project3Row3Tech')
+        }
+      ]
     }
   ];
 
@@ -66,10 +119,9 @@ const Projects = () => {
         </div>
         <div className="projects-grid">
           {projects.map((project, index) => (
-            <RevealCard key={index} delay={index * 150}>
+            <RevealCard key={project.id || index} delay={index * 150}>
               <div className="project-card">
               <div className="project-image-container">
-                <div className={`project-gradient ${project.gradientClass}`}></div>
                 <img
                   src={project.image}
                   alt={project.title}
@@ -89,9 +141,14 @@ const Projects = () => {
               </div>
               <div className="project-content">
                 <div className="project-header">
-                  <h3 className="project-title">
-                    {project.title}
-                  </h3>
+                  <div className="project-title-group">
+                    <h3 className="project-title">
+                      {project.title}
+                    </h3>
+                    {project.status && (
+                      <span className="project-status-badge">{project.status}</span>
+                    )}
+                  </div>
                   <div className="project-number">
                     {String(index + 1).padStart(2, '0')}
                   </div>
@@ -107,30 +164,45 @@ const Projects = () => {
                   ))}
                 </div>
                 <div className="project-buttons">
+                  {project.projectLink && project.projectLink !== '#' && (
+                    <button
+                      onClick={() => {
+                        window.open(project.projectLink, '_blank', 'noopener,noreferrer');
+                      }}
+                      className="project-button-primary"
+                    >
+                      <i className="fas fa-external-link-alt"></i>
+                      <span>{t('viewProject')}</span>
+                    </button>
+                  )}
+
                   <button
                     onClick={() => {
-                      if (project.projectLink && project.projectLink !== '#') {
-                        window.open(project.projectLink, '_blank', 'noopener,noreferrer');
-                      } else if (project.galleryImages && project.galleryImages.length > 0) {
-                        setViewerImages(project.galleryImages);
-                        setViewerTitle(project.title);
-                        setViewerOpen(true);
-                      }
+                      const imagesToUse =
+                        project.galleryImages && project.galleryImages.length > 0
+                          ? project.galleryImages
+                          : [project.image];
+
+                      navigate(`/project/${project.id}`, {
+                        state: {
+                          project: {
+                            ...project,
+                            description: project.fullDescription || project.description,
+                            imagesForViewer: imagesToUse
+                          }
+                        }
+                      });
                     }}
-                    className="project-button-primary"
+                    className={
+                      project.projectLink && project.projectLink !== '#'
+                        ? 'project-button-secondary'
+                        : 'project-button-primary'
+                    }
                   >
-                    {project.projectLink && project.projectLink !== '#' ? (
-                      <>
-                        <i className="fas fa-external-link-alt"></i>
-                        <span>{t('viewProject')}</span>
-                      </>
-                    ) : (
-                      <>
-                        <i className="fas fa-images"></i>
-                        <span>{t('viewProject')}</span>
-                      </>
-                    )}
+                    <i className="fas fa-list-ul"></i>
+                    <span>{t('viewDetails')}</span>
                   </button>
+
                   {project.codeLink && project.codeLink !== '#' && (
                     <a 
                       href={project.codeLink} 
@@ -149,12 +221,6 @@ const Projects = () => {
           ))}
         </div>
       </div>
-      <ProjectViewer
-        isOpen={viewerOpen}
-        onClose={() => setViewerOpen(false)}
-        images={viewerImages}
-        projectTitle={viewerTitle}
-      />
     </RevealSection>
   );
 };

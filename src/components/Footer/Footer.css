@@ -1,12 +1,8 @@
 .footer {
-  background: linear-gradient(to right, #111827, #1f2937, #111827);
-  color: white;
-  padding: 48px 16px;
-  border-top: 1px solid #374151;
-}
-
-.dark .footer {
-  background: linear-gradient(to right, #000000, #111827, #000000);
+  background: var(--color-surface);
+  color: var(--color-text-on-card);
+  padding: 48px 24px;
+  border-top: 1px solid var(--color-border);
 }
 
 .footer-container {
@@ -22,10 +18,7 @@
 .footer-logo-text {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(to right, #818cf8, #a78bfa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--color-text-on-card);
   margin-bottom: 8px;
 }
 
@@ -38,7 +31,6 @@
 }
 
 .footer-text {
-  color: #9ca3af;
+  color: var(--color-text-desc);
   font-weight: 500;
 }
-

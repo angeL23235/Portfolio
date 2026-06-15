@@ -138,7 +138,7 @@
   min-width: 100%;
   height: 100%;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
   padding: 20px 40px;
   box-sizing: border-box;
@@ -147,8 +147,8 @@
 .project-viewer-image {
   max-width: 100%;
   max-height: 100%;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -219,232 +219,57 @@
   border-radius: 6px;
 }
 
-@media (max-width: 1024px) {
-  .project-viewer-wrapper {
-    padding: 15px;
-  }
-
-  .project-viewer-container {
-    width: calc(95vw - 30px);
-    max-height: calc(100vh - 30px);
-    top: 50%;
-  }
-
-  .project-viewer-content {
-    padding: 20px 60px;
-    min-height: 350px;
-    max-height: calc(100vh - 200px);
-  }
-
-  .project-viewer-slide {
-    padding: 15px 30px;
-  }
-}
-
 @media (max-width: 768px) {
-  .project-viewer-overlay {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .project-viewer-wrapper {
-    padding: 10px;
-    display: block;
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
-  }
-
   .project-viewer-container {
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(100vw - 20px);
-    max-width: none;
-    height: auto;
-    max-height: 95vh;
-    border-radius: 16px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    background: #1f2937;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-  }
-
-  .project-viewer-close {
-    width: 36px;
-    height: 36px;
-    top: 12px;
-    right: 12px;
-    font-size: 1.1rem;
+    width: 95vw;
+    height: 95vh;
   }
 
   .project-viewer-header {
-    padding: 12px 16px;
+    padding: 16px;
   }
 
   .project-viewer-title {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
   }
 
   .project-viewer-counter {
-    font-size: 0.75rem;
-  }
-
-  .project-viewer-content {
-    padding: 5px 10px;
-    min-height: 400px;
-    max-height: calc(95vh - 140px);
-    flex: 1;
-    overflow: hidden;
-  }
-
-  .project-viewer-slide {
-    padding: 0 5px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .project-viewer-image {
-    max-width: 100%;
-    max-height: 100%;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 8px;
-  }
-
-  .project-viewer-nav {
-    width: 36px;
-    height: 36px;
-    font-size: 0.9rem;
-  }
-
-  .project-viewer-nav-prev {
-    left: 8px;
-  }
-
-  .project-viewer-nav-next {
-    right: 8px;
-  }
-
-  .project-viewer-dots {
-    padding: 12px;
-    gap: 6px;
-  }
-
-  .project-viewer-dot {
-    width: 8px;
-    height: 8px;
-  }
-
-  .project-viewer-dot.active {
-    width: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .project-viewer-overlay {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .project-viewer-wrapper {
-    padding: 5px;
-    display: block;
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
-  }
-
-  .project-viewer-container {
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(100vw - 10px);
-    max-height: 95vh;
-    border-radius: 12px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .project-viewer-close {
-    width: 32px;
-    height: 32px;
-    top: 8px;
-    right: 8px;
-    font-size: 1rem;
-  }
-
-  .project-viewer-header {
-    padding: 10px 12px;
-  }
-
-  .project-viewer-title {
-    font-size: 1rem;
-  }
-
-  .project-viewer-counter {
-    font-size: 0.7rem;
-  }
-
-  .project-viewer-content {
-    padding: 5px 8px;
-    min-height: 350px;
-    max-height: calc(95vh - 160px);
-    flex: 1;
-    overflow: hidden;
-  }
-
-  .project-viewer-slide {
-    padding: 0 3px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .project-viewer-image {
-    max-width: 100%;
-    max-height: 100%;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .project-viewer-nav {
-    width: 32px;
-    height: 32px;
     font-size: 0.8rem;
   }
 
+  .project-viewer-content {
+    padding: 0 60px;
+  }
+
+  .project-viewer-slide {
+    padding: 20px;
+  }
+
+  .project-viewer-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
   .project-viewer-nav-prev {
-    left: 5px;
+    left: 10px;
   }
 
   .project-viewer-nav-next {
-    right: 5px;
+    right: 10px;
   }
 
   .project-viewer-dots {
-    padding: 10px;
-    gap: 5px;
+    padding: 16px;
+    gap: 8px;
   }
 
   .project-viewer-dot {
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
   }
 
   .project-viewer-dot.active {
-    width: 18px;
+    width: 24px;
   }
 }

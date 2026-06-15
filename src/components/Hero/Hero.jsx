@@ -1,7 +1,7 @@
 import { useLanguage } from '../../contexts/LanguageContext';
 import './Hero.css';
-import profile from '../../assets/img/profile_portfolio.jpeg';
-import cvFile from '../../../public/cv/CV_ML.pdf';
+import profile from '../../assets/img/profile_portfolio.jpg';
+import cvFile from '../../../public/cv/Miguel_Londono_CV_Dev.pdf';
 
 const Hero = () => {
   const { t } = useLanguage();
