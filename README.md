@@ -2,7 +2,7 @@
 
 Portfolio personal desarrollado con React, Vite y Tailwind CSS. Incluye fondos dinámicos, partículas animadas y diseño responsive.
 
-## 🚀 Características
+## Características
 
 - **Fondos dinámicos por sección** con transiciones suaves al hacer scroll
 - **Partículas animadas** que cambian de color según el fondo activo
@@ -12,7 +12,7 @@ Portfolio personal desarrollado con React, Vite y Tailwind CSS. Incluye fondos d
 - **Animaciones de scroll** para elementos y tarjetas
 - **Secciones**: Hero, About, Projects, Skills, Contact
 
-## 🛠️ Tecnologías
+## Tecnologías
 
 - React 19
 - Vite
@@ -26,7 +26,7 @@ Portfolio personal desarrollado con React, Vite y Tailwind CSS. Incluye fondos d
 npm install
 ```
 
-## 🏃 Scripts
+## Scripts
 
 ```bash
 npm run dev      # Servidor de desarrollo
@@ -53,7 +53,7 @@ src/
 └── translations.js   # Traducciones
 ```
 
-## 🎨 Configuración de Fondos
+## Configuración de Fondos
 
 Los fondos se configuran en `src/App.jsx`:
 
@@ -66,19 +66,6 @@ const sectionBackgrounds = [
   { id: 'contact', image: background2 }
 ];
 ```
-
-## 🚀 Despliegue en GitHub Pages
-
-1. Ejecuta el build:
-```bash
-npm run build
-```
-
-2. Sube el contenido de la carpeta `dist` a la rama `gh-pages`
-
-3. En GitHub: Settings > Pages > Source: selecciona la rama `gh-pages`
-
-**Nota**: El repositorio debe llamarse `Portfolio` (con mayúscula) para que las rutas funcionen correctamente.
 
 ## 📝 Notas
 
