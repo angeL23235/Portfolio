@@ -37,4 +37,4 @@ src/
 
 ## Deploy
 
-https://angeL23235.github.io/Portfolio/
+https://portafolioangeldev.netlify.app/
