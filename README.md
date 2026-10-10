@@ -36,5 +36,4 @@ src/
 ```
 
 ## Deploy
-
-https://portafolioangeldev.netlify.app/
+https://angelportfolio.online/
