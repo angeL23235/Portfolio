@@ -334,13 +334,19 @@
     font-size: 0.95rem;
     width: 40px;
     height: 40px;
-    top: 20px;
+    top: 16px;
     left: 16px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+
+  .project-details-header-card {
+    padding: 16px 16px 18px;
   }
 
   .project-details-header {
     margin-bottom: 24px;
-    padding-bottom: 18px;
+    padding-bottom: 0;
   }
 
   .project-details-title {
@@ -364,7 +370,7 @@
   }
 
   .project-details-slide {
-    padding: 16px 24px;
+    padding: 16px 48px;
   }
 
   .project-details-nav {
@@ -373,11 +379,11 @@
   }
 
   .project-details-nav-prev {
-    left: 10px;
+    left: 8px;
   }
 
   .project-details-nav-next {
-    right: 10px;
+    right: 8px;
   }
 
   .project-details-table th,
@@ -385,35 +391,50 @@
     padding: 10px 12px;
     font-size: 0.8rem;
   }
+
+  .project-details-table {
+    min-width: 480px;
+  }
 }
 
 @media (max-width: 480px) {
   .project-details {
-    padding: 20px 12px 24px;
+    padding: 16px 12px 24px;
   }
 
   .project-details-container {
-    padding: 18px 14px 24px;
+    padding: 16px 12px 22px;
   }
 
   .project-details-title {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+  }
+
+  .project-details-title-row {
+    flex-direction: column;
+    gap: 8px;
   }
 
   .project-details-carousel {
-    min-height: 240px;
+    min-height: 220px;
   }
 
   .project-details-slide-container {
-    min-height: 240px;
+    min-height: 220px;
   }
 
   .project-details-image {
-    max-height: 200px;
+    max-height: 180px;
   }
 
   .project-details-slide {
-    padding: 12px 16px;
+    padding: 12px 40px;
+  }
+
+  .project-details-nav {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
   }
 
   .project-details-dot.active {
