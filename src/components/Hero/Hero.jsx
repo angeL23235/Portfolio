@@ -23,13 +23,6 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hero-badge">
-          <div className="hero-badge-content">
-            <span className="hero-badge-text">
-              👋 {t('heroDescription')}
-            </span>
-          </div>
-        </div>
         <h1 className="hero-title">
           <span className="hero-title-gradient">
             {t('heroTitle')}

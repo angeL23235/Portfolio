@@ -10,7 +10,6 @@ const translations = {
     // Hero
     heroTitle: 'Desarrollador Full Stack',
     heroSubtitle: 'Creando soluciones digitales innovadoras',
-    heroDescription: 'Apasionado por el desarrollo web y las tecnologías modernas',
     downloadCV: 'Descargar CV',
     viewProjects: 'Ver Proyectos',
     
@@ -108,7 +107,6 @@ const translations = {
     // Hero
     heroTitle: 'Full Stack Developer',
     heroSubtitle: 'Creating innovative digital solutions',
-    heroDescription: 'Passionate about web development and modern technologies',
     downloadCV: 'Download CV',
     viewProjects: 'View Projects',
     
