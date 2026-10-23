@@ -52,24 +52,32 @@
   overflow: hidden;
 }
 
-.social-button:hover {
-  width: 135px;
-  border-radius: 40px;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+@media (hover: hover) and (pointer: fine) {
+  .social-button:hover {
+    width: 135px;
+    border-radius: 40px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .social-button:hover .social-button-sign {
+    width: 30%;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-left: 10px;
+  }
+
+  .social-button:hover .social-button-text {
+    opacity: 1;
+    width: 70%;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-right: 10px;
+    animation: fadeInText 0.5s ease-out 0.2s both;
+  }
 }
 
-.social-button:hover .social-button-sign {
-  width: 30%;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  padding-left: 10px;
-}
-
-.social-button:hover .social-button-text {
-  opacity: 1;
-  width: 70%;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  padding-right: 10px;
-  animation: fadeInText 0.5s ease-out 0.2s both;
+@media (hover: none), (max-width: 640px) {
+  .social-button-text {
+    display: none;
+  }
 }
 
 @keyframes fadeInText {
